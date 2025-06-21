@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  minimalist-anime-converter:
+    build: .
+    container_name: minimalist-anime-converter
+    volumes:
+      - ./input:/app/input
+      - ./output:/app/output
+      - ./models:/app/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    # For GPU support (uncomment if you have NVIDIA GPU)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    stdin_open: true
+    tty: true
